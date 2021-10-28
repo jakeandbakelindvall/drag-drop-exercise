@@ -1,4 +1,9 @@
 .droppable {
-  /* so as to not harsh the mellow of child styles */
-  display: contents;
+  margin: 10px;
+  width: 250px;
+  height: 55px;
+}
+
+.hovered {
+  background-color: #33ff3355;
 }

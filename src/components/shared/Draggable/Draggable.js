@@ -1,6 +1,6 @@
 import "./Draggable.css";
 
-import { drop } from "../../../store/actions";
+import { drop, hover } from "../../../store/actions";
 
 import { useDrag } from "react-dnd";
 import { useDispatch } from "react-redux";
@@ -16,18 +16,22 @@ const Draggable = ({ children, type, id }) => {
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
+    // Cancel any hover tracking in store, do nothing if
+    // dropped in an invalid spot, but otherwise,
+    // alert store of new location for item
     end: (item, monitor) => {
+      dispatch(hover({ dropDest: null, index: -1 }));
       const result = monitor.getDropResult();
       if (!result) return;
 
-      const { dropDest } = result;
-      dispatch(drop({ dropDest, item, type }));
+      const { dropDest, index } = result;
+      dispatch(drop({ dropDest, index, item, type }));
     },
   });
 
   return (
     <div className={clsx("draggable", { dragging: isDragging })} ref={drag}>
-      {children()}
+      {children}
     </div>
   );
 };

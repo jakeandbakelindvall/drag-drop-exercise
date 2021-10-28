@@ -1,4 +1,4 @@
-import { DRAG, DROP } from "./types";
+import { DRAG, DROP, HOVER } from "./types";
 
 export const drag = (payload) => {
   return {
@@ -10,6 +10,13 @@ export const drag = (payload) => {
 export const drop = (payload) => {
   return {
     type: DROP,
+    payload,
+  };
+};
+
+export const hover = (payload) => {
+  return {
+    type: HOVER,
     payload,
   };
 };

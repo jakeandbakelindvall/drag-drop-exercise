@@ -1,21 +1,35 @@
 import "./Tray.css";
 
+import Droppable from "../shared/Droppable";
 import {
   ACTION_BUTTON,
   STATIC_TEXT,
   TEXT_BOX,
 } from "../../consts/drag-drop-consts";
-import Droppable from "../shared/Droppable";
 
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
 const Tray = ({ children }) => {
+  const dropDest = "tray";
+  const hoveredIndex = useSelector((store) => store[dropDest].hovered);
+
   return (
-    <Droppable accept={[ACTION_BUTTON, STATIC_TEXT, TEXT_BOX]} dropDest="tray">
-      {() => {
-        return <div className="tray">{children}</div>;
-      }}
-    </Droppable>
+    <div className="tray">
+      {children.map((child, i) => {
+        return (
+          <Droppable
+            accept={[ACTION_BUTTON, STATIC_TEXT, TEXT_BOX]}
+            dropDest={dropDest}
+            hovered={hoveredIndex === i}
+            index={i}
+            key={i}
+          >
+            {child}
+          </Droppable>
+        );
+      })}
+    </div>
   );
 };
 

@@ -8,17 +8,28 @@ import {
 } from "../../consts/drag-drop-consts";
 
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
 const FormBody = ({ children }) => {
+  const dropDest = "formBody";
+  const hoveredIndex = useSelector((store) => store[dropDest].hovered);
+
   return (
-    <Droppable
-      accept={[ACTION_BUTTON, STATIC_TEXT, TEXT_BOX]}
-      dropDest="formBody"
-    >
-      {() => {
-        return <div className="form-body">{children}</div>;
-      }}
-    </Droppable>
+    <div className="form-body">
+      {children.map((child, i) => {
+        return (
+          <Droppable
+            accept={[ACTION_BUTTON, STATIC_TEXT, TEXT_BOX]}
+            dropDest={dropDest}
+            hovered={hoveredIndex === i}
+            index={i}
+            key={i}
+          >
+            {child}
+          </Droppable>
+        );
+      })}
+    </div>
   );
 };
 

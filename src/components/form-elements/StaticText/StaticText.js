@@ -9,15 +9,9 @@ import PropTypes from "prop-types";
 const StaticText = ({ bold, text, titleCase, id }) => {
   return (
     <Draggable type={STATIC_TEXT} id={id}>
-      {() => {
-        return (
-          <div
-            className={clsx("static-text", { bold, "title-case": titleCase })}
-          >
-            {text}
-          </div>
-        );
-      }}
+      <div className={clsx("static-text", { bold, "title-case": titleCase })}>
+        {text}
+      </div>
     </Draggable>
   );
 };

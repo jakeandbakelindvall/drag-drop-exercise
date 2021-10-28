@@ -13,15 +13,21 @@ import { valueMapping } from "../../consts/value-mapping";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { useSelector } from "react-redux";
+import React from "react";
 
 const App = () => {
-  const tray = useSelector((store) => store.tray);
-  const formBody = useSelector((store) => store.formBody);
+  const tray = useSelector((store) => store.tray.items);
+  const formBody = useSelector((store) => store.formBody.items);
 
+  // Subscribe to store updates to the state of draggable items.
+  // The store operates on indices in-place, and never can modify
+  // the amount of objects in a given `items` array, leading to
+  // components that can be somewhat agnostic about rendering their
+  // children grids
   const renderTrayItems = () => {
     return (
       <Tray>
-        {tray.map((item) => {
+        {tray.map((item, i) => {
           switch (item.type) {
             case ACTION_BUTTON:
               return (
@@ -52,7 +58,7 @@ const App = () => {
                 />
               );
             default:
-              return <></>;
+              return <React.Fragment key={i}></React.Fragment>;
           }
         })}
       </Tray>
@@ -61,7 +67,7 @@ const App = () => {
   const renderFormBodyItems = () => {
     return (
       <FormBody>
-        {formBody.map((item) => {
+        {formBody.map((item, i) => {
           switch (item.type) {
             case ACTION_BUTTON:
               return (
@@ -90,7 +96,7 @@ const App = () => {
                 />
               );
             default:
-              return <></>;
+              return <React.Fragment key={i}></React.Fragment>;
           }
         })}
       </FormBody>

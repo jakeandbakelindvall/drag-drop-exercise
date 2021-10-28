@@ -8,15 +8,11 @@ import PropTypes from "prop-types";
 const TextBox = ({ disabled, placeholder, id }) => {
   return (
     <Draggable type={TEXT_BOX} id={id}>
-      {() => {
-        return (
-          <input
-            className="text-box"
-            disabled={disabled}
-            placeholder={placeholder}
-          ></input>
-        );
-      }}
+      <input
+        className="text-box"
+        disabled={disabled}
+        placeholder={placeholder}
+      ></input>
     </Draggable>
   );
 };

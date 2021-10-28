@@ -1,11 +1,12 @@
 .static-text {
-  width: 220px;
-  height: 35px;
+  width: 230px;
+  height: 55px;
+  margin-top: 10px;
   text-align: center;
 }
 
 .title-case {
-  font-size: 32px;
+  font-size: 24px;
 }
 
 .bold {

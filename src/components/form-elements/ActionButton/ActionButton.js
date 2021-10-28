@@ -9,19 +9,12 @@ import PropTypes from "prop-types";
 const ActionButton = ({ color, disabled, onClick, text, id }) => {
   return (
     <Draggable type={ACTION_BUTTON} id={id}>
-      {() => {
-        return (
-          <button
-            className={clsx(
-              "action-button",
-              color + (disabled ? "-disabled" : "")
-            )}
-            onClick={disabled ? () => {} : onClick}
-          >
-            {text}
-          </button>
-        );
-      }}
+      <button
+        className={clsx("action-button", color + (disabled ? "-disabled" : ""))}
+        onClick={disabled ? () => {} : onClick}
+      >
+        {text}
+      </button>
     </Draggable>
   );
 };
