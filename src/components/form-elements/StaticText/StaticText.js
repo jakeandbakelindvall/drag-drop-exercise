@@ -6,10 +6,10 @@ import { STATIC_TEXT } from "../../../consts/drag-drop-consts";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 
-const StaticText = ({ bold, text, titleCase }) => {
+const StaticText = ({ bold, text, titleCase, id }) => {
   return (
-    <Draggable dragConst={STATIC_TEXT}>
-      {({ isDragging, isDropped }) => {
+    <Draggable type={STATIC_TEXT} id={id}>
+      {() => {
         return (
           <div
             className={clsx("static-text", { bold, "title-case": titleCase })}
@@ -26,6 +26,7 @@ StaticText.propTypes = {
   bold: PropTypes.bool,
   text: PropTypes.string.isRequired,
   titleCase: PropTypes.bool,
+  id: PropTypes.string.isRequired,
 };
 
 StaticText.defaultProps = {

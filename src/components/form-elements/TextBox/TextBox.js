@@ -3,14 +3,20 @@ import "./TextBox.css";
 import Draggable from "../../shared/Draggable";
 import { TEXT_BOX } from "../../../consts/drag-drop-consts";
 
-const TextBox = () => {
+import PropTypes from "prop-types";
+
+const TextBox = ({ id }) => {
   return (
-    <Draggable dragConst={TEXT_BOX}>
-      {(isDragging, isDropped) => {
+    <Draggable type={TEXT_BOX} id={id}>
+      {(isUsable) => {
         return <div className="text-box">text box! lmao!</div>;
       }}
     </Draggable>
   );
+};
+
+TextBox.propTypes = {
+  id: PropTypes.string.isRequired,
 };
 
 export default TextBox;
