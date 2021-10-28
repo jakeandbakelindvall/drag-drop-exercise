@@ -1,7 +1,46 @@
 .action-button {
-  width: 245px;
-  height: 70px;
+  color: #ffffff;
+  font-weight: bold;
+  width: 220px;
+  height: 35px;
   border: 1px solid #aaaaaa90;
   border-radius: 5px;
   box-shadow: 0 0 3px #aaaaaa45;
+  cursor: inherit;
+}
+
+.red {
+  background-color: #cc6666;
+}
+
+.green {
+  background-color: #66cc66;
+}
+
+.blue {
+  background-color: #6666cc;
+}
+
+.red:hover {
+  background-color: #ff6666;
+}
+
+.green:hover {
+  background-color: #66ff66;
+}
+
+.blue:hover {
+  background-color: #6666ff;
+}
+
+.red-disabled {
+  background-color: #cc9999;
+}
+
+.green-disabled {
+  background-color: #99cc99;
+}
+
+.blue-disabled {
+  background-color: #9999cc;
 }

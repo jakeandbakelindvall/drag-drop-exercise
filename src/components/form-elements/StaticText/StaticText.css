@@ -1,9 +1,7 @@
 .static-text {
-  width: 245px;
-  height: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 220px;
+  height: 35px;
+  text-align: center;
 }
 
 .title-case {

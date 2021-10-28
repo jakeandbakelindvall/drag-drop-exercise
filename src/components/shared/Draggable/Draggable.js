@@ -2,7 +2,6 @@ import "./Draggable.css";
 
 import { drop } from "../../../store/actions";
 
-import { useState } from "react";
 import { useDrag } from "react-dnd";
 import { useDispatch } from "react-redux";
 import clsx from "clsx";
@@ -10,7 +9,6 @@ import PropTypes from "prop-types";
 
 const Draggable = ({ children, type, id }) => {
   const dispatch = useDispatch();
-  const [isUsable, setIsUsable] = useState(false);
 
   const [{ isDragging }, drag] = useDrag({
     type,
@@ -22,14 +20,14 @@ const Draggable = ({ children, type, id }) => {
       const result = monitor.getDropResult();
       if (!result) return;
 
-      dispatch(drop({ dropDest: result.dropDest, item, type }));
-      setIsUsable(monitor.getDropResult().dropDest === "formBody");
+      const { dropDest } = result;
+      dispatch(drop({ dropDest, item, type }));
     },
   });
 
   return (
     <div className={clsx("draggable", { dragging: isDragging })} ref={drag}>
-      {children({ isUsable })}
+      {children()}
     </div>
   );
 };

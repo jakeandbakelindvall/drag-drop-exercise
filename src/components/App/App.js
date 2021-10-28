@@ -8,6 +8,7 @@ import {
   STATIC_TEXT,
   TEXT_BOX,
 } from "../../consts/drag-drop-consts";
+import { valueMapping } from "../../consts/value-mapping";
 
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -23,11 +24,33 @@ const App = () => {
         {tray.map((item) => {
           switch (item.type) {
             case ACTION_BUTTON:
-              return <ActionButton id={item.id} />;
+              return (
+                <ActionButton
+                  disabled
+                  text={valueMapping[item.id]}
+                  id={item.id}
+                  key={item.id}
+                />
+              );
             case STATIC_TEXT:
-              return <StaticText text="Sign Up" bold titleCase id={item.id} />;
+              return (
+                <StaticText
+                  text={valueMapping[item.id]}
+                  bold
+                  titleCase
+                  id={item.id}
+                  key={item.id}
+                />
+              );
             case TEXT_BOX:
-              return <TextBox id={item.id} />;
+              return (
+                <TextBox
+                  disabled
+                  placeholder={valueMapping[item.id]}
+                  id={item.id}
+                  key={item.id}
+                />
+              );
             default:
               return <></>;
           }
@@ -41,11 +64,31 @@ const App = () => {
         {formBody.map((item) => {
           switch (item.type) {
             case ACTION_BUTTON:
-              return <ActionButton id={item.id} />;
+              return (
+                <ActionButton
+                  text={valueMapping[item.id]}
+                  id={item.id}
+                  key={item.id}
+                />
+              );
             case STATIC_TEXT:
-              return <StaticText text="Sign Up" bold titleCase id={item.id} />;
+              return (
+                <StaticText
+                  text={valueMapping[item.id]}
+                  bold
+                  titleCase
+                  id={item.id}
+                  key={item.id}
+                />
+              );
             case TEXT_BOX:
-              return <TextBox id={item.id} />;
+              return (
+                <TextBox
+                  placeholder={valueMapping[item.id]}
+                  id={item.id}
+                  key={item.id}
+                />
+              );
             default:
               return <></>;
           }

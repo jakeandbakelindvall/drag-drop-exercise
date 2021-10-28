@@ -1,7 +1,11 @@
 .text-box {
-  width: 245px;
-  height: 70px;
+  padding-left: 10px;
+  width: 210px;
+  height: 35px;
   border: 1px solid #aaaaaa90;
   border-radius: 5px;
   box-shadow: 0 0 3px #aaaaaa45;
+  justify-content: center;
+  align-items: center;
+  cursor: inherit;
 }
