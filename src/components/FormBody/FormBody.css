@@ -1,0 +1,10 @@
+.form-body {
+  grid-row: 3 / 4;
+  grid-column: 3 / 4;
+  display: grid;
+  grid-template-columns: 250px 250px;
+  grid-template-rows: 75px 75px 75px 75px;
+  background: #ffffff;
+  box-shadow: var(--diffuse-shadow);
+  padding: 16px;
+}

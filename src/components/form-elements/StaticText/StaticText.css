@@ -1,0 +1,15 @@
+.static-text {
+  width: 245px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-case {
+  font-size: 32px;
+}
+
+.bold {
+  font-weight: bold;
+}

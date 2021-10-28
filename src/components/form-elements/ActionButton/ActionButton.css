@@ -1,0 +1,7 @@
+.action-button {
+  width: 245px;
+  height: 70px;
+  border: 1px solid #aaaaaa90;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #aaaaaa45;
+}

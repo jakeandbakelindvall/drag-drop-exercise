@@ -1,19 +1,23 @@
 import "./App.css";
 
-function App() {
+import FormBody from "../FormBody";
+import Tray from "../Tray";
+import { ActionButton, TextBox, StaticText } from "../form-elements";
+
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
+const App = () => {
   return (
-    <>
-      <div className="element-tray">
-        <div className="element-placeholder" />
-        <div className="element-placeholder" />
-        <div className="element-placeholder" />
-        <div className="element-placeholder" />
-        <div className="element-placeholder" />
-        <div className="element-placeholder" />
-      </div>
-      <div className="form-canvas" />
-    </>
+    <DndProvider backend={HTML5Backend}>
+      <Tray>
+        <ActionButton />
+        <TextBox />
+        <StaticText text="Sign Up" bold titleCase />
+      </Tray>
+      <FormBody />
+    </DndProvider>
   );
-}
+};
 
 export default App;
