@@ -1,3 +1,7 @@
+import {
+  DROP_DEST_TRAY,
+  DROP_DEST_FORM_BODY,
+} from "../consts/drag-drop-consts";
 import { DRAG, DROP, HOVER } from "./types";
 
 const reducer = (state = {}, action) => {
@@ -17,8 +21,14 @@ const reducer = (state = {}, action) => {
       }
 
       const newState = {
-        tray: { items: [...state.tray.items], hovered: -1 },
-        formBody: { items: [...state.formBody.items], hovered: -1 },
+        [DROP_DEST_TRAY]: {
+          items: [...state[DROP_DEST_TRAY].items],
+          hovered: -1,
+        },
+        [DROP_DEST_FORM_BODY]: {
+          items: [...state[DROP_DEST_FORM_BODY].items],
+          hovered: -1,
+        },
       };
 
       // Set new location for this item

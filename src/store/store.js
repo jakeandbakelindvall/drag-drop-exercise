@@ -3,6 +3,8 @@ import {
   ACTION_BUTTON,
   TEXT_BOX,
   STATIC_TEXT,
+  DROP_DEST_TRAY,
+  DROP_DEST_FORM_BODY,
 } from "../consts/drag-drop-consts";
 
 import { createStore } from "redux";
@@ -34,8 +36,8 @@ export const defaultFormBody = {
 };
 
 const store = createStore(reducer, {
-  tray: defaultTray,
-  formBody: defaultFormBody,
+  [DROP_DEST_TRAY]: defaultTray,
+  [DROP_DEST_FORM_BODY]: defaultFormBody,
 });
 
 export default store;

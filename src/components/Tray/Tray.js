@@ -5,6 +5,7 @@ import {
   ACTION_BUTTON,
   STATIC_TEXT,
   TEXT_BOX,
+  DROP_DEST_TRAY,
 } from "../../consts/drag-drop-consts";
 
 import PropTypes from "prop-types";
@@ -12,8 +13,7 @@ import { useSelector } from "react-redux";
 import React from "react";
 
 const Tray = ({ children }) => {
-  const dropDest = "tray";
-  const hoveredIndex = useSelector((store) => store[dropDest].hovered);
+  const hoveredIndex = useSelector((store) => store[DROP_DEST_TRAY].hovered);
 
   return (
     <div className="tray">
@@ -21,7 +21,7 @@ const Tray = ({ children }) => {
         return (
           <Droppable
             accept={[ACTION_BUTTON, STATIC_TEXT, TEXT_BOX]}
-            dropDest={dropDest}
+            dropDest={DROP_DEST_TRAY}
             // Only show hover styling if targeting a blank cell
             hovered={hoveredIndex === i && child.type === React.Fragment}
             index={i}
