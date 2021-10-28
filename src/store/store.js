@@ -20,7 +20,16 @@ export const defaultTray = {
 };
 
 export const defaultFormBody = {
-  items: [{}, {}, {}, {}, {}, {}, {}, {}],
+  items: [
+    { id: "", type: "" },
+    { id: "", type: "" },
+    { id: "", type: "" },
+    { id: "", type: "" },
+    { id: "", type: "" },
+    { id: "", type: "" },
+    { id: "", type: "" },
+    { id: "", type: "" },
+  ],
   hovered: -1,
 };
 

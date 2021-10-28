@@ -3,6 +3,7 @@
   height: 100px;
   width: 75vw;
   overflow-x: scroll;
+  overflow-y: hidden;
   border-radius: 0 0 8px 8px;
   box-shadow: var(--diffuse-shadow);
   display: flex;

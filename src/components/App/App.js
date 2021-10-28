@@ -21,8 +21,8 @@ const App = () => {
 
   // Subscribe to store updates to the state of draggable items.
   // The store operates on indices in-place, and never can modify
-  // the amount of objects in a given `items` array, leading to
-  // components that can be somewhat agnostic about rendering their
+  // the OG amount of objects in a given `items` array, leading to
+  // components that can be pretty agnostic about rendering their
   // children grids
   const renderTrayItems = () => {
     return (

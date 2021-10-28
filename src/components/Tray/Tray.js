@@ -9,6 +9,7 @@ import {
 
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
+import React from "react";
 
 const Tray = ({ children }) => {
   const dropDest = "tray";
@@ -21,7 +22,8 @@ const Tray = ({ children }) => {
           <Droppable
             accept={[ACTION_BUTTON, STATIC_TEXT, TEXT_BOX]}
             dropDest={dropDest}
-            hovered={hoveredIndex === i}
+            // Only show hover styling if targeting a blank cell
+            hovered={hoveredIndex === i && child.type === React.Fragment}
             index={i}
             key={i}
           >

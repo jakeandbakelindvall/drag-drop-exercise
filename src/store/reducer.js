@@ -11,20 +11,29 @@ const reducer = (state = {}, action) => {
     case DROP: {
       const { dropDest, index, item, type } = action.payload;
 
-      // Do not add dupe if already in given `dropDest` array
-      if (state[dropDest].items.some((x) => x.id === item.id)) return state;
+      // Cannot drop onto something already there
+      if (state[dropDest].items[index].id) {
+        return state;
+      }
 
       const newState = {
         tray: { items: [...state.tray.items], hovered: -1 },
         formBody: { items: [...state.formBody.items], hovered: -1 },
       };
 
+      // Set new location for this item
       newState[dropDest].items[index] = { id: item.id, type };
+      // Now, clear pre-existing dupe if dropped into same `dropDest` array
+      newState[dropDest].items = newState[dropDest].items.map((x, i) => {
+        return x.id === item.id && i !== index ? { id: "", type: "" } : x;
+      });
+
       Object.keys(newState).forEach((k) => {
-        // Don't want to wipe newly modified entry!
+        // Don't bother with logic over newly modified entry from above
         if (k === dropDest) return;
+        // Remove from old location
         newState[k].items = newState[k].items.map((x) => {
-          return x.id !== item.id ? x : {};
+          return x.id !== item.id ? x : { id: "", type: "" };
         });
       });
 
