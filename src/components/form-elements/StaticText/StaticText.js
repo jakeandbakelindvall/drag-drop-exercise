@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 const StaticText = ({ bold, text, titleCase }) => {
   return (
     <Draggable dragConst={STATIC_TEXT}>
-      {(isDragging, isDropped) => {
+      {({ isDragging, isDropped }) => {
         return (
           <div
             className={clsx("static-text", { bold, "title-case": titleCase })}

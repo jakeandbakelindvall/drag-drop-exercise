@@ -11,9 +11,12 @@ const App = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <Tray>
-        <ActionButton />
-        <TextBox />
         <StaticText text="Sign Up" bold titleCase />
+        <TextBox />
+        <TextBox />
+        <TextBox />
+        <TextBox />
+        <ActionButton />
       </Tray>
       <FormBody />
     </DndProvider>

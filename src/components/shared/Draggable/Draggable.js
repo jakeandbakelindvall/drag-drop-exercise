@@ -24,13 +24,13 @@ const Draggable = ({ children, dragConst }) => {
 
   return (
     <div className={clsx("draggable", { dragging: isDragging })} ref={drag}>
-      {children(isDragging, isDropped)}
+      {children({ isDragging, isDropped })}
     </div>
   );
 };
 
 Draggable.propTypes = {
-  children: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
   dragConst: PropTypes.shape({
     item: PropTypes.shape({
       id: PropTypes.string.isRequired,
