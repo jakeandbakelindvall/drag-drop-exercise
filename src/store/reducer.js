@@ -31,20 +31,20 @@ const reducer = (state = {}, action) => {
         },
       };
 
-      // Set new location for this item
-      newState[dropDest].items[index] = { id: item.id, type };
-      // Now, clear pre-existing dupe if dropped into same `dropDest` array
-      newState[dropDest].items = newState[dropDest].items.map((x, i) => {
-        return x.id === item.id && i !== index ? { id: "", type: "" } : x;
-      });
-
       Object.keys(newState).forEach((k) => {
-        // Don't bother with logic over newly modified entry from above
-        if (k === dropDest) return;
-        // Remove from old location
-        newState[k].items = newState[k].items.map((x) => {
-          return x.id !== item.id ? x : { id: "", type: "" };
-        });
+        if (k === dropDest) {
+          // Set new location for this item=
+          newState[k].items[index] = { id: item.id, type };
+          // Now, clear dupe if dropped into same `dropDest` array
+          newState[k].items = newState[k].items.map((x, i) => {
+            return x.id === item.id && i !== index ? { id: "", type: "" } : x;
+          });
+        } else {
+          // Remove from old location
+          newState[k].items = newState[k].items.map((x) => {
+            return x.id !== item.id ? x : { id: "", type: "" };
+          });
+        }
       });
 
       return newState;
@@ -56,8 +56,14 @@ const reducer = (state = {}, action) => {
       const { dropDest, index } = action.payload;
 
       const newState = {
-        tray: { items: [...state.tray.items], hovered: -1 },
-        formBody: { items: [...state.formBody.items], hovered: -1 },
+        [DROP_DEST_TRAY]: {
+          items: [...state[DROP_DEST_TRAY].items],
+          hovered: -1,
+        },
+        [DROP_DEST_FORM_BODY]: {
+          items: [...state[DROP_DEST_FORM_BODY].items],
+          hovered: -1,
+        },
       };
 
       if (!dropDest) {
